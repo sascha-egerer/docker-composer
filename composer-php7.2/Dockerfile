@@ -16,9 +16,10 @@ COPY entrypoint-composer.sh /usr/local/bin/
 
 # install composer
 RUN ./installComposer.sh && \
+    export WWW_DATA_HOMEFOLDER="`eval echo '~www-data'`" && \
     rm ./installComposer.sh && \
-    mkdir -p /var/www/.ssh/ $COMPOSER_HOME/cache /overwrite-ssh/ && \
-    chown -R www-data:www-data /var/www/.ssh/ $COMPOSER_HOME /overwrite-ssh/
+    mkdir -p $WWW_DATA_HOMEFOLDER/.ssh/ $COMPOSER_HOME/cache /overwrite-ssh/ && \
+    chown -R www-data:www-data $WWW_DATA_HOMEFOLDER/.ssh/ $COMPOSER_HOME /overwrite-ssh/
 
 USER www-data
 
