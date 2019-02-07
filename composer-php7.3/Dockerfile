@@ -7,7 +7,7 @@ ENV COMPOSER_HOME /tmp/composer
 
 RUN set -xe && \
     apt-get update && \
-    apt-get install --no-install-recommends -y git ssh && \
+    apt-get install --no-install-recommends -y git ssh unzip && \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $buildDependencies && \
     rm -rf /var/lib/apt/lists/*
 
